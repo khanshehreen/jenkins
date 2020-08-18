@@ -16,13 +16,13 @@ pipeline {
 		stage ('Build Stage') {
 			steps {
 				sh 'sudo su'
-				sh 'sudo yum update'
+				sh 'sudo yum -y update'
 				echo 'Creating a virtual environment'
-				sh 'sudo yum install python-virtualenv'
+				sh 'sudo yum -y install python-virtualenv'
 				sh 'virtualenv myvirtualenv'
 				sh 'source myvirtualenv/bin/activate'
 				echo 'Installing python and other packages'
-				sh 'sudo yum install python3'
+				sh 'sudo yum -y install python3'
 				echo 'Running the unit test case file'
 				sh 'python test_bank.py'
 			}
@@ -33,8 +33,8 @@ pipeline {
 				sh "sudo scp -i  '$WORKSPACE/jenkins-20902' -o StrictHostKeyChecking=no -r test_bank.py ec2-user@54.152.2.54:/home/ec2-user"
 				sh '''sudo ssh -i "jenkins-20902" -o StrictHostKeyChecking=no ec2-user@ec2-54.152.2.54.compute-1.amazonaws.com 
 				echo "Hello Quantiphi!" 
-				sudo yum install python3
-				sudo yum install python-virtualenv
+				sudo yum install -y python3
+				sudo yum install -y python-virtualenv
 				virtualenv env
 				source env/bin/activate
 				sudo pip3 install unittest2
