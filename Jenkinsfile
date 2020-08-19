@@ -31,7 +31,7 @@ pipeline {
 			steps {
 				sh "sudo scp -i  '/home/ec2-user/jenkins-20902.pem' -o StrictHostKeyChecking=no -r bank.py ec2-user@54.237.44.226:/home/ec2-user"
 				sh "sudo scp -i  '/home/ec2-user/jenkins-20902.pem' -o StrictHostKeyChecking=no -r test_bank.py ec2-user@54.237.44.226:/home/ec2-user"
-				sh '''sudo ssh -i "jenkins-20902.pem" -o StrictHostKeyChecking=no ec2-user@ec2-54-237-44-226.compute-1.amazonaws.com 
+				sh '''sudo ssh -i "/home/ec2-user/jenkins-20902.pem" -o StrictHostKeyChecking=no ec2-user@ec2-54-237-44-226.compute-1.amazonaws.com 
 				echo "Hello Quantiphi!"  
 				sudo yum install -y python3
 				sudo yum install -y python-virtualenv
