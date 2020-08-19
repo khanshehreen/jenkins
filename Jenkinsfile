@@ -4,7 +4,7 @@ pipeline {
 		stage ('CleanUp Stage') {
 			steps {
 				echo 'CleanUp of existing code and folder in jenkins'
-				//cleanWs()
+				cleanWs()
 			}
 		}
 		stage('CheckOut Stage') {
