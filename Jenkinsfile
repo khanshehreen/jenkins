@@ -39,13 +39,13 @@ pipeline {
 				sh "sudo scp -i  '/var/lib/jenkins/jenkins-20902.pem' -o StrictHostKeyChecking=no -r bank.py ec2-user@54.237.44.226:/home/ec2-user" //Copying files from jenkins to ec2 instance 
 				sh "sudo scp -i  '/var/lib/jenkins/jenkins-20902.pem' -o StrictHostKeyChecking=no -r test_bank.py ec2-user@54.237.44.226:/home/ec2-user"
 				sh '''sudo ssh -i "/var/lib/jenkins/jenkins-20902.pem" -o StrictHostKeyChecking=no ec2-user@ec2-54-237-44-226.compute-1.amazonaws.com  
-				echo "Hello Quantiphi!"  		//Simple echo message to check in output
-				sudo yum install -y python3 		//Intstalling python3 to run the main file in ec2 instance
-				sudo yum install -y python-virtualenv	//Installing virtual env on runtime in ec2 instance
+				echo "Hello Quantiphi!"  		
+				sudo yum install -y python3 		
+				sudo yum install -y python-virtualenv	
 				virtualenv env
-				source env/bin/activate			//Activating the virtual environment
-				sudo pip3 install unittest2		//Installing the dependencies to run the main file
-				python3 bank.py				//Running the mail file in ec2 isntance
+				source env/bin/activate			
+				sudo pip3 install unittest2		
+				python3 bank.py				
 				python3 test_bank.py
 				<<EOT'''
 				echo 'Hello'
