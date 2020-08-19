@@ -38,7 +38,7 @@ pipeline {
 			steps {
 				sh "sudo scp -i  '/var/lib/jenkins/jenkins-20902.pem' -o StrictHostKeyChecking=no -r bank.py ec2-user@54.237.44.226:/home/ec2-user" //Copying files from jenkins to ec2 instance 
 				sh "sudo scp -i  '/var/lib/jenkins/jenkins-20902.pem' -o StrictHostKeyChecking=no -r test_bank.py ec2-user@54.237.44.226:/home/ec2-user"
-				sh '''sudo ssh -i "/var/lib/jenkins/jenkins-20902.pem" -o StrictHostKeyChecking=no ec2-user@ec2-54-237-44-226.compute-1.amazonaws.com  //Providing the credentials files to ssh into ec2 instance
+				sh '''sudo ssh -i "/var/lib/jenkins/jenkins-20902.pem" -o StrictHostKeyChecking=no ec2-user@ec2-54-237-44-226.compute-1.amazonaws.com  
 				echo "Hello Quantiphi!"  		//Simple echo message to check in output
 				sudo yum install -y python3 		//Intstalling python3 to run the main file in ec2 instance
 				sudo yum install -y python-virtualenv	//Installing virtual env on runtime in ec2 instance
